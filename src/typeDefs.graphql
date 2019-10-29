@@ -51,7 +51,11 @@ type Trail {
   """
   The difficulty rating for a `Trail`
   """
-  difficulty: String!
+  difficulty: String! @deprecated(reason: "Use the enum reason instead")
+  """
+  The difficulty rating for a `Trail`
+  """
+  newDifficulty: TrailDifficulty!
   """
   A boolean describing whether or not a `Trail` is groomed
   """
@@ -85,6 +89,22 @@ An enum describing the options for `TrailStatus`: `OPEN`, `CLOSED`
 enum TrailStatus {
   OPEN
   CLOSED
+}
+
+"""
+An enum describing the trail difficulty levels
+"""
+enum TrailDifficulty {
+  "Easiest trail suitable for beginners"
+  GREEN
+  "Easier trail for beginner-intermediates"
+  BLUE
+  "Suitable for intermediates"
+  BLUE_DIAMOND
+  "Experts only, run is either steep or has moguls"
+  BLACK_DIAMOND
+  "Experts only, run may be ungroomed or have severe hazards e.g. cliffs"
+  DOUBLE_BLACK_DIAMOND
 }
 
 type Query {
